@@ -1,0 +1,855 @@
+/* =============================================
+   BURGUNDY BACKGROUND & NAVY TEXT LUXURY AESTHETIC
+   ============================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --font-display: 'Caveat', cursive;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-body: 'Nunito', sans-serif;
+
+  /* Rich Velvet Burgundy Background Palette */
+  --bg-burgundy-deep: #3b0616;
+  --bg-burgundy-main: #520c22;
+  --bg-burgundy-rich: #66102c;
+  --bg-burgundy-glow: #80183b;
+
+  /* Royal Navy Blue Typography & Accents */
+  --navy-text-deep: #0a1835;
+  --navy-text-main: #102347;
+  --navy-text-body: #162c57;
+  --navy-text-muted: #2f446e;
+  --navy-btn-bg: #0d1e3f;
+  --navy-btn-hover: #162e5c;
+
+  /* Luxury Stationery Paper & Accents */
+  --stationery-paper: #fffcf7;
+  --stationery-card-bg: rgba(255, 252, 247, 0.97);
+  --champagne-gold: #dfc08f;
+  --champagne-light: #f7eedc;
+  --border-gold: rgba(223, 192, 143, 0.45);
+  --border-burgundy: rgba(102, 16, 44, 0.25);
+
+  --shadow-luxury: 0 20px 50px rgba(0, 0, 0, 0.45), 0 0 30px rgba(70, 9, 26, 0.35);
+  --shadow-paper: 0 15px 40px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(255, 255, 255, 0.9);
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background-color: var(--bg-burgundy-deep);
+  color: var(--navy-text-main);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+.handwritten {
+  font-family: var(--font-display);
+}
+
+/* Ambient Burgundy glow layers */
+.ambient-glow {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(100px);
+  z-index: 0;
+  opacity: 0.7;
+}
+
+.glow-top-left {
+  top: -15%;
+  left: -10%;
+  width: 55vw;
+  height: 55vw;
+  background: radial-gradient(circle, var(--bg-burgundy-glow) 0%, transparent 70%);
+}
+
+.glow-bottom-right {
+  bottom: -15%;
+  right: -10%;
+  width: 60vw;
+  height: 60vw;
+  background: radial-gradient(circle, var(--bg-burgundy-rich) 0%, transparent 70%);
+}
+
+.gift-page {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 20% 25%, rgba(128, 24, 59, 0.4) 0%, transparent 45%),
+              radial-gradient(circle at 80% 75%, rgba(82, 12, 34, 0.5) 0%, transparent 55%),
+              linear-gradient(135deg, #380514 0%, #520c22 45%, #66102c 80%, #3e0717 100%);
+}
+
+/* =============================================
+   SCREEN TRANSITIONS & SCROLL HANDLING
+   ============================================= */
+.screen {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  display: block;
+  transition: opacity 0.4s ease,
+              transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.screen.visible {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.screen.hidden {
+  opacity: 0;
+  transform: scale(0.97) translateY(20px);
+  visibility: hidden;
+  pointer-events: none !important;
+  z-index: 1;
+}
+
+.screen.exit {
+  opacity: 0;
+  transform: scale(1.03) translateY(-20px);
+  visibility: hidden;
+  pointer-events: none !important;
+  z-index: 1;
+}
+
+.screen-scroll-container {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(14px, 2.5vh, 28px) 16px;
+  box-sizing: border-box;
+}
+
+/* =============================================
+   STATIONERY PAPER CARDS (Navy Text on Ivory Paper)
+   ============================================= */
+.stationery-card {
+  background: var(--stationery-card-bg);
+  border: 1px solid var(--border-gold);
+  border-radius: 22px;
+  color: var(--navy-text-main);
+  box-shadow: var(--shadow-luxury), var(--shadow-paper);
+  position: relative;
+  overflow: hidden;
+  margin: auto 0;
+}
+
+.stationery-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--champagne-gold), transparent);
+}
+
+/* =============================================
+   NAVY ACTION BUTTONS
+   ============================================= */
+.navy-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--navy-btn-bg) 0%, var(--navy-btn-hover) 100%);
+  color: #ffffff;
+  border: 1px solid rgba(223, 192, 143, 0.4);
+  padding: 14px 34px;
+  border-radius: 50px;
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 22px rgba(10, 24, 53, 0.35);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  text-decoration: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  position: relative;
+  z-index: 20;
+}
+
+.navy-action-btn * {
+  pointer-events: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .navy-action-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    background: linear-gradient(135deg, #10244d 0%, #1e3a73 100%);
+    box-shadow: 0 12px 28px rgba(10, 24, 53, 0.45), 0 0 15px rgba(223, 192, 143, 0.3);
+  }
+
+  .navy-action-btn:hover .pulse-arrow {
+    transform: translateX(4px);
+  }
+}
+
+.navy-action-btn:active {
+  transform: translateY(1px) scale(0.97);
+}
+
+.navy-badge-tag {
+  display: inline-block;
+  padding: 5px 16px;
+  border-radius: 20px;
+  background: rgba(13, 30, 63, 0.08);
+  border: 1px solid rgba(13, 30, 63, 0.2);
+  color: var(--navy-text-deep);
+  font-size: 0.82rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+/* =============================================
+   SCREEN 1: INTRO (الظرف - بدون أي خلفية بيضاء)
+   ============================================= */
+.intro-screen {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  text-align: center;
+  z-index: 2;
+  margin: auto;
+}
+
+.intro-heading {
+  font-size: clamp(2.6rem, 6.5vw, 3.6rem);
+  color: var(--champagne-light);
+  letter-spacing: 1px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  margin-bottom: 5px;
+}
+
+.intro-subtitle {
+  font-size: clamp(2.1rem, 5.5vw, 2.8rem);
+  color: var(--champagne-light);
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5);
+  margin-top: 5px;
+}
+
+.envelope-wrapper {
+  margin: 10px 0;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.4s ease;
+}
+
+.envelope-image {
+  border-radius: 14px;
+  object-fit: cover;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6),
+              0 0 35px rgba(128, 24, 59, 0.5);
+}
+
+.intro-screen:hover .envelope-wrapper {
+  transform: translateY(-8px) scale(1.05);
+  filter: drop-shadow(0 15px 30px rgba(223, 192, 143, 0.4));
+}
+
+.click-hint,
+.open-envelope-btn {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: var(--champagne-light);
+  background: rgba(223, 192, 143, 0.15);
+  border: 1px solid rgba(223, 192, 143, 0.45);
+  padding: 10px 24px;
+  border-radius: 50px;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  animation: pulseHint 2s infinite ease-in-out;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.open-envelope-btn:hover {
+  background: rgba(223, 192, 143, 0.3);
+  border-color: var(--champagne-gold);
+  transform: translateY(-2px) scale(1.05);
+}
+
+@keyframes pulseHint {
+  0%, 100% { opacity: 0.7; transform: translateY(0); }
+  50% { opacity: 1; transform: translateY(-3px); }
+}
+
+/* =============================================
+   SCREEN 2: TO / FROM CARD
+   ============================================= */
+.card-screen .screen-scroll-container {
+  padding: clamp(10px, 2vh, 20px) 14px;
+  justify-content: center;
+}
+
+.from-to-card {
+  width: 92%;
+  max-width: 650px;
+  padding: clamp(22px, 3vh, 38px) clamp(20px, 5vw, 42px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.card-header {
+  font-size: clamp(1.9rem, 4.8vw, 2.5rem);
+  line-height: 1.3;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: clamp(14px, 2vh, 22px);
+}
+
+.label-navy {
+  color: var(--navy-text-deep);
+  font-weight: 700;
+  margin-right: 8px;
+}
+
+.line-from, .line-to {
+  color: var(--navy-text-body);
+}
+
+.card-body .message-label {
+  font-size: clamp(1.6rem, 4vw, 2.1rem);
+  color: var(--navy-text-deep);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.card-body .message-text {
+  font-size: clamp(1.25rem, 3.4vw, 1.55rem);
+  line-height: 1.5;
+  color: var(--navy-text-body);
+  margin-bottom: clamp(16px, 2.2vh, 24px);
+}
+
+.card-footer {
+  text-align: center;
+  padding-top: 4px;
+}
+
+/* =============================================
+   SCREEN 3: PHOTO STORY (الصورة وتحتها كلام)
+   ============================================= */
+.photo-screen .screen-scroll-container {
+  padding: clamp(8px, 1.8vh, 18px) 14px;
+  justify-content: center;
+}
+
+.story-card {
+  width: 92%;
+  max-width: 490px;
+  padding: clamp(16px, 2.2vh, 26px) clamp(16px, 4vw, 28px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+}
+
+.story-image-frame {
+  width: min(200px, 48vw, 24vh);
+  height: min(200px, 48vw, 24vh);
+  position: relative;
+  margin-bottom: clamp(10px, 1.5vh, 16px);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 3px solid var(--border-gold);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+  flex-shrink: 0;
+}
+
+.story-image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.story-text-container {
+  color: var(--navy-text-body);
+  margin-bottom: clamp(10px, 1.5vh, 16px);
+}
+
+.story-title {
+  font-size: clamp(1.8rem, 4.6vw, 2.4rem);
+  color: var(--navy-text-deep);
+  font-weight: 700;
+  margin-bottom: clamp(6px, 1vh, 10px);
+  line-height: 1.2;
+}
+
+.story-paragraph {
+  font-size: clamp(1.15rem, 3.2vw, 1.4rem);
+  line-height: 1.45;
+  color: var(--navy-text-body);
+  max-width: 440px;
+}
+
+.story-card .card-footer {
+  margin-top: 0;
+  padding-top: 2px;
+}
+
+/* =============================================
+   SCREEN 4: BIRTHDAY MESSAGE + BALLOON
+   ============================================= */
+.birthday-message-screen .screen-scroll-container {
+  padding: clamp(8px, 1.8vh, 18px) 14px;
+  justify-content: center;
+}
+
+.birthday-wishes-card {
+  width: 92%;
+  max-width: 560px;
+  padding: clamp(16px, 2.2vh, 28px) clamp(16px, 4vw, 30px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+}
+
+.balloon-showcase-wrapper {
+  position: relative;
+  margin-bottom: 16px;
+  animation: floatLevitate 4.5s ease-in-out infinite;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.35));
+}
+
+.birthday-hero-duo {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: clamp(6px, 2vw, 14px);
+  margin-bottom: clamp(10px, 1.6vh, 16px);
+  width: 100%;
+}
+
+.duo-balloon-wrap {
+  position: relative;
+  animation: floatBalloon 4.8s ease-in-out infinite;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.35));
+  z-index: 1;
+}
+
+.duo-cat-wrap {
+  position: relative;
+  animation: floatCat 4.8s ease-in-out infinite 0.7s;
+  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.28));
+  z-index: 2;
+  margin-left: -12px;
+}
+
+@keyframes floatBalloon {
+  0%, 100% {
+    transform: translateY(0) rotate(-1deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1.5deg);
+  }
+}
+
+@keyframes floatCat {
+  0%, 100% {
+    transform: translateY(0) rotate(1deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(-1.5deg);
+  }
+}
+
+.hero-balloon-img {
+  max-height: clamp(120px, 22vw, 175px);
+  width: auto;
+  object-fit: contain;
+}
+
+.hero-cat-img {
+  max-height: clamp(130px, 24vw, 185px);
+  width: auto;
+  object-fit: contain;
+}
+
+@keyframes floatLevitate {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(1.5deg);
+  }
+}
+
+.floating-balloon-img {
+  max-height: 180px;
+  width: auto;
+  object-fit: contain;
+}
+
+.birthday-message-content {
+  margin-bottom: clamp(8px, 1.4vh, 14px);
+}
+
+.birthday-wishes-title {
+  font-size: clamp(1.85rem, 4.8vw, 2.6rem);
+  color: var(--navy-text-deep);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: clamp(6px, 1vh, 10px);
+}
+
+.birthday-wishes-body {
+  font-size: clamp(1.15rem, 3.2vw, 1.38rem);
+  line-height: 1.48;
+  color: var(--navy-text-body);
+  max-width: 500px;
+}
+
+.birthday-wishes-card .card-footer {
+  margin-top: 0;
+  padding-top: 2px;
+}
+
+/* =============================================
+   SCREEN 5: THINGS WE WANNA DO TOGETHER (نقط تحت بعض)
+   ============================================= */
+.bucket-screen .screen-scroll-container {
+  padding: clamp(10px, 2vh, 20px) 14px;
+  justify-content: center;
+}
+
+.bucket-list-card {
+  width: 92%;
+  max-width: 600px;
+  padding: clamp(20px, 2.8vh, 34px) clamp(20px, 5vw, 38px);
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.bucket-title {
+  font-size: clamp(1.9rem, 4.8vw, 2.6rem);
+  color: var(--navy-text-deep);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: clamp(12px, 2vh, 18px);
+}
+
+.things-bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 4px 0 clamp(12px, 2vh, 18px) 0;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1.3vh, 13px);
+}
+
+.things-bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3.5vw, 1.55rem);
+  color: var(--navy-text-body);
+  line-height: 1.35;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed rgba(223, 192, 143, 0.4);
+}
+
+.things-bullet-item:last-child {
+  border-bottom: none;
+}
+
+.bullet-dot {
+  color: var(--bg-burgundy-rich);
+  font-size: 1.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: -2px;
+}
+
+.bullet-text {
+  flex: 1;
+}
+
+.bucket-list-card .card-footer {
+  margin-top: 0;
+  padding-top: 2px;
+}
+
+/* =============================================
+   SCREEN 6: MUSIC PLAYER
+   ============================================= */
+.music-player-card {
+  width: 92%;
+  max-width: 440px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.music-header-title {
+  font-size: clamp(2.1rem, 5vw, 2.6rem);
+  color: var(--navy-text-deep);
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+
+.album-art {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid var(--border-gold);
+  margin-bottom: 25px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+  transition: transform 0.4s ease;
+}
+
+.album-art.playing {
+  animation: spinVinyl 18s linear infinite;
+}
+
+@keyframes spinVinyl {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.album-img {
+  object-fit: cover;
+}
+
+.vinyl-center-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--navy-btn-bg);
+  border: 3px solid var(--champagne-gold);
+  z-index: 2;
+}
+
+.song-title {
+  color: var(--navy-text-deep);
+  font-weight: 700;
+  font-size: 2.1rem;
+  margin-bottom: 22px;
+}
+
+.slider-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 28px;
+}
+
+.time-text {
+  font-family: var(--font-body);
+  color: var(--navy-text-main);
+  font-size: 0.9rem;
+  min-width: 38px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.progress-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  flex: 1;
+  height: 6px;
+  background: rgba(13, 30, 63, 0.15);
+  border-radius: 10px;
+  outline: none;
+  cursor: pointer;
+  background-image: linear-gradient(var(--navy-btn-bg), var(--navy-btn-bg));
+  background-repeat: no-repeat;
+}
+
+.progress-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--navy-btn-bg);
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(13, 30, 63, 0.5);
+  transition: transform 0.15s ease;
+}
+
+.progress-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
+
+.progress-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--navy-btn-bg);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 8px rgba(13, 30, 63, 0.5);
+  transition: transform 0.15s ease;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.play-btn {
+  width: 66px;
+  height: 66px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--navy-btn-bg) 0%, var(--navy-btn-hover) 100%);
+  color: #ffffff;
+  border: 2px solid var(--border-gold);
+  font-size: 1.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 8px 25px rgba(10, 24, 53, 0.4);
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.play-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 12px 30px rgba(10, 24, 53, 0.5);
+}
+
+.play-btn:active {
+  transform: scale(0.96);
+}
+
+/* Utilities */
+.mt-4 { margin-top: 1rem; }
+.mt-6 { margin-top: 1.5rem; }
+.mt-8 { margin-top: 2rem; }
+
+/* =============================================
+   LOVE LETTER SCREEN (The little things I love about you)
+   ============================================= */
+.love-letter-screen .screen-scroll-container {
+  padding: clamp(10px, 2vh, 20px) 14px;
+  justify-content: center;
+}
+
+.love-letter-card {
+  width: 92%;
+  max-width: 620px;
+  padding: clamp(20px, 2.6vh, 34px) clamp(18px, 4.5vw, 36px);
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.letter-header-title {
+  font-size: clamp(1.85rem, 4.8vw, 2.6rem);
+  color: var(--navy-text-deep);
+  font-weight: 700;
+  text-align: center;
+  margin-top: 2px;
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+
+.letter-salutation {
+  font-size: clamp(1.25rem, 3.4vw, 1.6rem);
+  color: var(--bg-burgundy-rich);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: clamp(10px, 1.6vh, 16px);
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--border-gold);
+  letter-spacing: 0.5px;
+}
+
+.letter-body-paragraphs {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(7px, 1.2vh, 12px);
+}
+
+.letter-para {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3.3vw, 1.45rem);
+  line-height: 1.4;
+  color: var(--navy-text-body);
+  text-align: center;
+  word-break: break-word;
+}
+
+.letter-para-accent {
+  color: var(--navy-text-deep);
+  font-weight: 700;
+}
+
+.letter-decor-footer {
+  text-align: center;
+  margin-top: clamp(8px, 1.4vh, 14px);
+  margin-bottom: 2px;
+}
+
+.letter-heart-divider {
+  font-size: 1.3rem;
+  color: var(--champagne-gold);
+  letter-spacing: 6px;
+  opacity: 0.85;
+}
+
+.love-letter-card .card-footer {
+  margin-top: clamp(8px, 1.4vh, 14px);
+  padding-top: 0;
+}
+
+.floating-cat-img {
+  max-height: 240px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.25));
+}
