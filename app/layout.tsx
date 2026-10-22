@@ -2,29 +2,29 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://loveyouuu-lyart.vercel.app'),
-  title: 'A Special Gift For You 🎁',
-  description: 'A heartfelt birthday message just for you.',
+  metadataBase: new URL('https://agiftforyouuu.vercel.app'),
+  title: 'Happy Birthday Ahmed! 🎂',
+  description: 'A special birthday message for Ahmed 🤍',
   openGraph: {
-    title: 'A Special Gift For You 🎁',
-    description: 'A heartfelt birthday message just for you.',
-    url: 'https://loveyouuu-lyart.vercel.app',
+    title: 'Happy Birthday Ahmed! 🎂',
+    description: 'A special birthday message for Ahmed 🤍',
+    url: 'https://agiftforyouuu.vercel.app',
     siteName: 'Birthday Gift',
     type: 'website',
     images: [
       {
-        url: '/images/share-cover.png',
-        width: 1200,
-        height: 630,
-        alt: 'A Special Gift',
+        url: '/images/cat.png',
+        width: 675,
+        height: 1200,
+        alt: 'Birthday Cat 🐱🎂',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'A Special Gift For You 🎁',
-    description: 'A heartfelt birthday message just for you.',
-    images: ['/images/share-cover.png'],
+    title: 'Happy Birthday Ahmed! 🎂',
+    description: 'A special birthday message for Ahmed 🤍',
+    images: ['/images/cat.png'],
   },
 }
 
